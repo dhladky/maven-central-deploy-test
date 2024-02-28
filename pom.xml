@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.sonatype.central.testing.david-hladky</groupId>
+  <artifactId>maven-central-deploy-test</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>Maven Central Deploy Test</name>
+  <description>Artifact to deploy to Maven Central to test the deployment process</description>
+
+  <url>https://github.com/dhladky/maven-central-deploy-test</url>
+
+  <!-- License must be present-->
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+      <comments>At least one license must be present. Here is an example of ASL v. 2.0</comments>
+    </license>
+  </licenses>
+
+  <!-- Source code management information is mandatory as well.-->
+  <scm>
+    <connection>git@github.com:dhladky/maven-central-deploy-test.git</connection>
+    <url>scm:git:git@github.com:dhladky/maven-central-deploy-test.git</url>
+    <developerConnection>scm:git:git@github.com:dhladky/maven-central-deploy-test.git</developerConnection>
+  </scm>
+
+  <!-- At least one developer should be mentioned -->
+  <developers>
+    <developer>
+      <id>dhladky</id>
+      <name>David Hladky</name>
+      <organization>Red Hat</organization>
+    </developer>
+  </developers>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <!-- Javadoc and sources are required -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.2.1</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <distributionManagement>
+    <repository>
+      <id>local-nexus3</id>
+      <url>http://localhost:8082/repository/releases/</url>
+    </repository>
+  </distributionManagement>
+
+</project>
